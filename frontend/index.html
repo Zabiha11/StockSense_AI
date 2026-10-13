@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StockSense AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path d="M16 28S4 20.5 4 11.8C4 7.9 7 5 10.5 5c2.4 0 4.4 1.3 5.5 3.3C17.1 6.3 19.1 5 21.5 5 25 5 28 7.9 28 11.8 28 20.5 16 28 16 28z" fill="currentColor"/></svg>
+      <span>StockSense</span>
+    </div>
+    <label class="api">
+      <span id="statusDot" class="dot"></span>
+      <span id="statusText">Connecting</span>
+      <input id="apiBase" type="text" spellcheck="false" aria-label="API address">
+    </label>
+  </header>
+
+  <main class="layout">
+    <section class="pane list-pane">
+      <h1>What's about to run out?</h1>
+      <p class="sub">Choose a product to see its demand forecast and how close it is to a stockout.</p>
+      <input id="search" class="search" type="search" placeholder="Search by name or stock code" autocomplete="off">
+      <p id="count" class="count"></p>
+      <ul id="list" class="list"></ul>
+      <button id="more" class="ghost" hidden>Show more products</button>
+    </section>
+
+    <section class="pane detail" id="detail">
+      <div id="empty" class="empty">
+        <svg viewBox="0 0 120 120" width="96" height="96" aria-hidden="true">
+          <path class="float" d="M60 100S18 74 18 43c0-14 10-24 23-24 8 0 15 4 19 11 4-7 11-11 19-11 13 0 23 10 23 24 0 31-42 57-42 57z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+        </svg>
+        <h2>Nothing selected yet</h2>
+        <p>Pick a product on the left and its forecast will draw itself here.</p>
+      </div>
+
+      <div id="content" hidden>
+        <div class="d-head">
+          <h2 id="pName"></h2>
+          <div id="pChips" class="chips"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <h3>Forecast demand</h3>
+            <p id="fSummary" class="muted"></p>
+          </div>
+          <div id="chartWrap" class="chart-wrap">
+            <svg id="chart" viewBox="0 0 640 240" preserveAspectRatio="none"></svg>
+            <div id="tip" class="tip"></div>
+          </div>
+        </div>
+
+        <form id="riskForm" class="card" novalidate>
+          <h3>Check stockout risk</h3>
+          <div class="fields">
+            <label>Current stock<input name="current_stock" type="number" min="0" step="1" required placeholder="e.g. 120"></label>
+            <label>On order<input name="on_order" type="number" min="0" step="1" value="0"></label>
+            <label>Lead time (days)<input name="lead_time_days" type="number" min="1" max="30" step="1" value="7"></label>
+            <label>Service level
+              <select name="service_level">
+                <option value="0.90">90%</option>
+                <option value="0.95" selected>95%</option>
+                <option value="0.99">99%</option>
+              </select>
+            </label>
+          </div>
+          <button class="primary" type="submit">Check risk</button>
+          <p id="formError" class="error" role="alert"></p>
+        </form>
+
+        <div id="result" class="result" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
