@@ -12,7 +12,7 @@
 
 ## 🌐 Live Demo
 
-- **Live Application:** https://stocksense-ai-majq.onrender.com
+- **Live Application:** https://stocksense-ai-majq.onrender.com/
 - **GitHub Repository:** https://github.com/Zabiha11/StockSense_AI
 
 ## 📌 Project Overview
@@ -530,7 +530,7 @@ Final-Year Computer Science and Engineering Student | AI/ML & Software Developme
 
 - GitHub: https://github.com/Zabiha11
 - Project: https://github.com/Zabiha11/StockSense_AI
-- Live Demo: https://stocksense-ai-majq.onrender.com
+- Live Demo: https://stocksense-ai-majq.onrender.com/
 ## 📄 License
 
 Choose an appropriate open-source license before distributing the project. If you intend to make the repository publicly reusable, consider the MIT License and include a corresponding `LICENSE` file.
