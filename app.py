@@ -1,4 +1,5 @@
-
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 import math
 
@@ -42,12 +43,18 @@ SERVICE_LEVEL_Z = {
 }
 
 
+BASE_DIR = Path(__file__).resolve().parent
+FRONTEND_DIR = BASE_DIR / "frontend"
+
+app.mount(
+    "/static",
+    StaticFiles(directory=FRONTEND_DIR),
+    name="static"
+)
+
 @app.get("/")
 def home():
-    return {
-        "message": "Welcome to StockSenseAI API",
-        "docs": "/docs"
-    }
+    return FileResponse(FRONTEND_DIR / "index.html")
 
 
 @app.get("/products")
