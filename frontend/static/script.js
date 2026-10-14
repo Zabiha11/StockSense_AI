@@ -8,8 +8,10 @@ const els = {
 };
 
 const PAGE = 40;
-let API = localStorage.getItem('stocksense_api') || 'http://127.0.0.1:8000';
+let API = window.location.origin;
 let products = [], filtered = [], shown = 0, selected = null;
+
+
 els.apiBase.value = API;
 
 /* ---------- helpers ---------- */

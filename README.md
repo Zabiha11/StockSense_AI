@@ -144,7 +144,7 @@ The API separates the data-processing and analytics logic from the presentation 
 
 ## 🏗️ System Architecture
 
-```text
+
                  Historical Retail Dataset
                            |
                            v
@@ -176,7 +176,9 @@ The API separates the data-processing and analytics logic from the presentation 
                            |
                            v
                   Interactive Dashboard
-```
+
+
+
 
 ## 🛠️ Technology Stack
 
